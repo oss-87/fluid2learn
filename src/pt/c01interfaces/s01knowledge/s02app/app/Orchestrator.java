@@ -13,6 +13,7 @@ public class Orchestrator
 {
 	public static void main(String[] args)
 	{
+		
 		IBaseConhecimento base = new BaseConhecimento();
 		String listaAnimais[] = base.listaNomes();
 
@@ -20,13 +21,24 @@ public class Orchestrator
 		IResponder resp;
 		IStatistics stat;
 		
-        for (int animal = 0; animal < listaAnimais.length; animal++) {
+		// Escolhe um animal para ser adivinhado
+		int animal = 3; // Pensando em pikachu
+		
+		System.out.println("Pensando em " + listaAnimais[animal] + "...");
+		stat = new Statistics();
+		enq = new Enquirer();
+		resp = new Responder(stat, listaAnimais[animal]);
+		enq.connect(resp);
+		System.out.println("----------------------------------------------------------------------------------------\n");
+    
+		
+        /*for (int animal = 0; animal < listaAnimais.length; animal++) {
 			System.out.println("Enquirer com " + listaAnimais[animal] + "...");
 			stat = new Statistics();
 			enq = new Enquirer();
 			resp = new Responder(stat, listaAnimais[animal]);
 			enq.connect(resp);
 			System.out.println("----------------------------------------------------------------------------------------\n");
-        }		
+        }*/		
 	}
 }
